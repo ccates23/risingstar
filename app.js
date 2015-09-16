@@ -9,16 +9,34 @@ var form = require('./routes/form');
 var routes = require('./routes/index');
 var api = require('./routes/api');
 
-app.use(bodyParser.urlencoded({extended: true}));
-app.use('/itinerary', form);
+app.use(bodyParser.json());
+
+app.use(express.static('www'));
+
+app.use("/js", function(req, res, next) {
+  res.send(404);
+});
+
 app.use('/api', api);
-app.use(express.static('www'))
+app.use('/*', routes);
+
 // app.register('.html', require('jade'));
-app.set('view engine', 'jade');
-app.use('/', routes);
 
+var exphbs = require("express-handlebars");
+var hbs = exphbs.create({
+    defaultLayout: "main",
+    helpers: {},
+    // Uses multiple partials dirs, templates in "shared/templates/" are shared
+    // with the client-side of the app (see below).
+    partialsDir: [
+        "views/partials/"
+    ],
+    extname: ".hbs"
+});
 
-
+// Register `hbs` as our view engine using its bound `engine()` function.
+app.engine("hbs", hbs.engine);
+app.set("view engine", "hbs");
 
 //  nodemon app (starts server)
 
