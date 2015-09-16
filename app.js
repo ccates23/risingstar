@@ -7,9 +7,11 @@ var app = express();
 var router = express.Router;
 var form = require('./routes/form');
 var routes = require('./routes/index');
+var api = require('./routes/api');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/itinerary', form);
+app.use('/api', api);
 app.use(express.static('www'))
 // app.register('.html', require('jade'));
 app.set('view engine', 'jade');

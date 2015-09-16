@@ -1,5 +1,11 @@
 angular
-  .module('RisingStarTravel', ["ngRoute"])
+  .module('RisingStarTravel', ["ngRoute"], function ($locationProvider){
+    $locationProvider.html5Mode({
+      enabled: true,
+      requireBase: false
+      });
+
+  })
   .config(function ($routeProvider) {
     $routeProvider
       .when('/intinerary', {
@@ -28,4 +34,18 @@ angular
       });
       itinerary.$save();
     };
-  });
+  })
+
+   .controller("Table", function($http, $location){
+    var vm = this;
+    vm.itinerary = {};
+    var body = {}
+    body.id = $location.path().slice(17);
+    debugger
+    $http.post('/api', body).then(function(data){
+      console.log(data)
+      vm.itinerary = data;
+    },function(err){
+      console.log(err);
+    })
+   })

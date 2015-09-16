@@ -14,8 +14,9 @@ var Itinerary = mongoose.model('Itinerary', {
   distance: String,
   cost: String,
   ccauth: String,
-  notes: String
-  /* Put in the rest of the schema */
+  notes: String,
+  // versionKey: false
+
 });
 
 module.exports = Itinerary;
