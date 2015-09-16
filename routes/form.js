@@ -3,15 +3,20 @@ var express = require('express');
 var router = express.Router();
 
 
+router.get('/table/:id', function(req, res){
+  var id = req.params.id;
+  Itinerary.findById(id, function (err,data) {
+    console.log('search response');
+    console.log(data);
+    res.send(data);
+
+  })
+})
+
+
 // post to /itinerary
 router.post('/', function(req, res) {
-  // var itinerary = new Itinerary({
-  //   name: 'Dierks Bentley',         // request.body.name
-  //   date: '10/1/2015',            // req.body.date
-  //   travelers: ['Foo', 'Bar']
 
-
-  // });
   var itinerary = new Itinerary({
   date: req.body.date,
   artist: req.body.artist,
@@ -29,12 +34,14 @@ router.post('/', function(req, res) {
   /* Put in the rest of the schema */
 })
 
-  itinerary.save(function (err) {
+  itinerary.save(function (err, data) {
+    var id = data._id
     if (err) throw err;
     // Something like this
     // Basically send down the new itinerary just created
     // res.status(201).json(itinerary);
-    res.redirect('/');
+    // res.redirect('/');
+    res.redirect('/itinerary/table/' + id);
   });
 });
 
