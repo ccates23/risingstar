@@ -1,12 +1,10 @@
-var Itinerary = require("../models/itinerary");
+// var Itinerary = require("../models/itinerary");
 var express = require('express');
 var router = express.Router();
 
-router.get('/', function(req, res){
-    res.sendFile('templates/form.html', {root: 'views'});
+router.get('*', function(req, res){
+  res.render('index');
 });
-
-
 
 // post to /itinerary
 router.post('/', function(request, response) {

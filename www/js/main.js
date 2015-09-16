@@ -1,21 +1,42 @@
 angular
-  .module('RisingStarTravel', ["ngRoute"], function ($locationProvider){
+  .module('RisingStarTravel', ["ngRoute", "ngResource"], function ($locationProvider){
     $locationProvider.html5Mode({
       enabled: true,
       requireBase: false
-      });
-
+    });
   })
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/intinerary', {
-        templateUrl: 'assets/static/form.html',
-        controller: 'MainCtrl',
+      .when('/itinerary/create', {
+        templateUrl: '/js/templates/form.html',
+        controller: 'ItineraryCtrl',
         controllerAs: 'main'
-      });
       })
+      .when('/itinerary', {
+        templateUrl: '/js/templates/list.html',
+        controller: 'ItineraryListCtrl',
+        controllerAs: 'main'
+      })
+      .when('/', {
+        templateUrl: '/js/templates/home.html',
+        controller: 'HomeCtrl',
+        controllerAs: 'main'
+      })
+      .otherwise({
+        redirectTo: "/"
+      });
+    })
+  .factory("Itinerary", function($resource) {
+    return $resource('/api/itinerary/:id', null, {
+      "update": { method:'PUT' }
+    });
+  })
+  .controller("ItineraryListCtrl", function(Itinerary) {
+    this.itineraries = Itinerary.query();
+  })
+  .controller("ItineraryCtrl", function(Itinerary, $location) {
+    this.itinerary = {};
 
-   .controller("Main", function() {
     this.save = function() {
       var itinerary = new Itinerary({
         date: this.itinerary.date,
@@ -33,19 +54,25 @@ angular
         notes: this.itinerary.notes
       });
       itinerary.$save();
+
+      $location.path("/itinerary");
     };
   })
-
-   .controller("Table", function($http, $location){
+  .controller("HomeCtrl", function() {
+    this.message = "Welcome to Rising Star!";
+  })
+  .controller("Table", function($http, $location){
     var vm = this;
+
     vm.itinerary = {};
+
     var body = {}
     body.id = $location.path().slice(17);
-    debugger
+
     $http.post('/api', body).then(function(data){
-      console.log(data)
+      console.log(data);
       vm.itinerary = data;
-    },function(err){
+    }, function(err){
       console.log(err);
-    })
-   })
+    });
+  });

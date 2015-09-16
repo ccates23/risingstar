@@ -1,0 +1,22 @@
+<div class="container-fluid">
+  <div class="col-md-2">
+    <form ng-submit="main.save()" novalidate>
+        Date: <input ng-model="main.itinerary.date" name="date" type="date" placeholder="mm/dd/yyyy">
+        Artist: <input ng-model="main.itinerary.artist" name="artist" type="text" placeholder="Artist">
+        Travelers: <input ng-model="main.itinerary.travelers" name="travelers" type="text" placeholder="Travelers">
+        Vendor Name: <input ng-model="main.itinerary.vendor" name="vendor" type="text" placeholder="Vendor Name">
+        Address: <input ng-model="main.itinerary.address" name="address" type="text" placeholder="Address">
+        Phone: <input ng-model="main.itinerary.phone" name="phone" type="tel" placeholder="555-555-5555">
+        Check In / Pick Up <input ng-model="main.itinerary.checkin" name="checkin" type="date" placeholder="check in / p/u">
+        Check Out / Drop Off <input ng-model="main.itinerary.checkout" name="checkout" type="date" placeholder="check out / d/o">
+        Confirmation #: <input ng-model="main.itinerary.confirmation" name="confirmation" type="text" placeholder="Confimation #">
+        Distance to Venue: <input ng-model="main.itinerary.distance" name="distance" type="text" placeholder="Distance to Venue">
+        Cost: <input ng-model="main.itinerary.cost" name="cost" type="text" placeholder="">
+        Credit Card Authorization: <input ng-model="main.itinerary.ccauth" name="ccauth" type="text" placeholder="CC Auth">
+        Notes: <textarea ng-model="main.itinerary.notes" type="text" name="notes"> </textarea>
+        <input type="submit" value="Submit">
+    </form>
+
+    {{main.itinerary | json}}
+  </div>
+</div>
