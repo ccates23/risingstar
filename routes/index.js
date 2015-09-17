@@ -3,13 +3,13 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/', function(req, res){
-    res.sendFile('templates/form.html', {root: 'views'});
+  res.render('index');
 });
 
 
 
 // post to /itinerary
-router.post('/', function(request, response) {
+router.post('/itinerary', function(request, response) {
   var itinerary = new Itinerary({ 
     name: 'Dirks Bently',         // request.body.name
     date: '10/1/2015',            // request.body.date

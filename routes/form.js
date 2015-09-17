@@ -16,7 +16,7 @@ router.get('/:id', function(req, res){
 
 
 // post to /itinerary
-router.post('/', function(req, res) {
+router.post('/itinerary', function(req, res) {
 
   var itinerary = new Itinerary(req.body)// {
 //   date: req.body.date,
@@ -36,15 +36,6 @@ router.post('/', function(req, res) {
 
 
 
-  itinerary.save(function (err, data) {
-    var id = data._id
-    if (err) throw err;
-    // Something like this
-    // Basically send down the new itinerary just created
-    // res.status(201).json(itinerary);
-    // res.redirect('/');
-    res.redirect('/itinerary/table/' + id);
-  });
 });
 
 module.exports = router;
