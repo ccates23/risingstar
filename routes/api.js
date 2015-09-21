@@ -5,28 +5,46 @@ var router = express.Router();
 // This is your API controller, all post requests should come here
 // POST /api/itinerary
 
-var artists = [{
-  artist: "Foo Bar"
-}, {
-  artist: "Foo Baz"
-}];
-
 router.get('/itinerary', function(req, res){
-  // Delete this return when you get mongo working
-  // return res.send(artists);
-
-
-  Itinerary.findById({}, function (err,data) {
+  Itinerary.find(function (err,data) {
+    console.log('errrr', err)
     res.send(data);
   });
 });
 
-router.get('/itinerary/:id', function(req, res){   
+router.get('/itinerary/:id', function(req, res){
    var id = req.params.id;
-
-   Itinerary.findById(id, function (err,data) {
+    Itinerary.findById(id, function (err,data) {
     res.send(data);
   });
+});
+
+ router.put('/itinerary/:id', function(req, res) {
+  var id = req.params.id;
+  Itinerary.findById(id, function (err, data) {
+    console.log(id);
+    if (data) {
+      data.date = req.body.date;
+      data.artist = req.body.artist;
+      data.travelers = req.body.travelers;
+      data.vendor = req.body.vendor;
+      data.address = req.body.address;
+      data.phone = req.body.phone;
+      data.checkin = req.body.checkin;
+      data.checkout = req.body.checkout;
+      data.confirmation = req.body.confirmation;
+      data.distance = req.body.distance;
+      data.cost = req.body.cost;
+      data.ccauth = req.body.ccauth;
+      data.notes = req.body.notes;
+
+      data.save(function (err, data) {
+        if (err) throw err;
+        res.redirect('/itinerary/create');
+      });
+    };
+        
+  })
 });
 
 router.post('/itinerary', function(req, res){
@@ -49,10 +67,6 @@ router.post('/itinerary', function(req, res){
   itinerary.save(function (err, data) {
     var id = data._id
     if (err) throw err;
-    // Something like this
-    // Basically send down the new itinerary just created
-    // res.status(201).json(itinerary);
-    // res.redirect('/');
     res.redirect('/itinerary' + id);
   });
 });

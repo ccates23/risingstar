@@ -1,24 +1,16 @@
 //  required variables
 
-var fs = require('fs');
+// var fs = require('fs');
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
-var router = express.Router;
-var form = require('./routes/form');
-var routes = require('./routes/index');
+// var router = express.Router;
+// var form = require('./routes/form');
+// var routes = require('./routes/index');
 var api = require('./routes/api');
-
-app.use(bodyParser.json());
-
-app.use(express.static('www'));
-
-app.use('/api', api);
-app.use('/', routes);
-
-// app.register('.html', require('jade'));
-
 var exphbs = require("express-handlebars");
+
+// Register `hbs` as our view engine using its bound `engine()` function.
 var hbs = exphbs.create({
     defaultLayout: "main",
     helpers: {},
@@ -30,11 +22,15 @@ var hbs = exphbs.create({
     extname: ".hbs"
 });
 
-// Register `hbs` as our view engine using its bound `engine()` function.
 app.engine("hbs", hbs.engine);
 app.set("view engine", "hbs");
 
-//  nodemon app (starts server)
+app.use(bodyParser.json());
+app.use(express.static('www'));
+app.use('/api', api);
+app.use('/', function (req, res) {
+    res.render('index');
+});
 
 var port = process.env.PORT || 3000;
 var server = app.listen(port, function () {
@@ -43,4 +39,4 @@ var server = app.listen(port, function () {
 	console.log('Example app listening at http://%s:%d', host, port);
 });
 
-module.exports = router;
+// module.exports = router;
