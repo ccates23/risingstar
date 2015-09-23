@@ -1,0 +1,76 @@
+<div class="container">
+  <form ng-submit="main.save()" novalidate>
+     <div id="itinerary-form" class="row">
+      <div class="col-md-6 col-sm-offset-3 text-center">
+       <div style="padding-top: 50px;">
+        <h4>Date</h4>
+          <input ng-model="main.itinerary.date" id="date" class="form-control input-md text-center" name="date" type="text" placeholder="mm/dd/yyyy">
+        </div>
+          <hr>
+          <div>
+           <h4>Artist</h4>
+            <input ng-model="main.itinerary.artist" id="date" class="form-control input-md text-center" name="artist" type="text" placeholder="Artist">
+           </div>
+          <hr>
+         <div>
+          <h4>Travelers</h4>
+           <input ng-model="main.itinerary.travelers" id="travelers" class="form-control input-md text-center" name="travelers" type="text" placeholder="Travelers">
+         </div>
+        <div>
+         <h4>Vendor Name</h4>
+           <input ng-model="main.itinerary.vendor" id="vendor" class="form-control input-md text-center" name="vendor" type="text" placeholder="Vendor Name">
+           </div>
+            <hr>
+          <div>
+           <h4>Address</h4>
+            <input ng-model="main.itinerary.address" id="address" class="form-control input-md text-center" name="address" type="text" placeholder="Address">
+          </div>
+          <hr>
+        <div>
+         <h4>Phone</h4>
+          <input ng-model="main.itinerary.phone" id="phone" class="form-control input-md text-center" name="phone" type="tel" placeholder="555-555-5555">
+        </div>
+          <hr>
+           <div>
+            <h4>Check In / Pick Up</h4>
+             <input ng-model="main.itinerary.checkin" id="checkin" class="form-control input-md text-center" name="checkin" type="text" placeholder="check in / p/u">
+            </div>
+            <hr>
+          <div>
+            <h4>Check Out / Drop Off</h4>
+              <input ng-model="main.itinerary.checkout" id"checkout" class="form-control input-md text-center" name="checkout" type="text" placeholder="check out / d/o">
+            </div>
+            <hr>
+         <div>
+       <h4> Confirmation #</h4>
+        <input ng-model="main.itinerary.confirmation" id="confirmation" class="form-control input-md text-center" name="confirmation" type="text" placeholder="Confimation #">
+        </div>
+          <hr>
+           <div>
+            <h4>Distance to Venue</h4>
+             <input ng-model="main.itinerary.distance" id="distance" class="form-control input-md text-center" name="distance" type="text" placeholder="Distance to Venue">
+           </div>
+          <hr>
+         <div>
+         <h4>Cost</h4>
+          <input ng-model="main.itinerary.cost" id="cost" class="form-control input-md text-center" name="cost" type="text" placeholder="">
+           </div>
+           <hr>
+         <div>
+        <h4>Credit Card Authorization</h4>
+         <input ng-model="main.itinerary.ccauth" id="ccauth" class="form-control input-md text-center" name="ccauth" type="text" placeholder="CC Auth">
+           </div>
+            <hr>
+             <div>
+              <h4>Notes</h4>
+               <textarea ng-model="main.itinerary.notes" id="notes" class="form-control input-md text-center" type="text" name="notes"></textarea>
+             </div>
+            <hr>
+           <input class="btn btn-info btn-lg" type="submit" value="Save">
+          <input class="btn btn-info btn-lg" type="submit" value="Send">
+        </div>
+       </form>
+      </div>
+     </div>
+
+

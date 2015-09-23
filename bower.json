@@ -1,0 +1,21 @@
+{
+  "name": "risingstar",
+  "version": "1.0.0",
+  "homepage": "https://github.com/ccates23/risingstar",
+  "authors": [
+    "chadcates <cates.chad@gmail.com>"
+  ],
+  "main": "app.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-route": "~1.4.5",
+    "angular": "~1.4.6"
+  }
+}

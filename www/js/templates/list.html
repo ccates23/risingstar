@@ -1,0 +1,73 @@
+<div class="list">
+  <div class="container">
+  <div class="list-items" ng-repeat="itinerary in main.itineraries | filter:main.name">
+	<div class="list-item"style="text-align: center; padding-top: 50px;">
+		<h4>Date</h4>
+		<p>{{itinerary.date}}</p>
+	</div>
+	<hr>
+	<div class="list-item" style="text-align: center;">
+		<h4>Artist</h4>
+		<p>{{itinerary.artist}}</p>
+	</div>
+	<hr>
+		<div class="list-item" style="text-align: center;">
+		<h4>Travelers</h4>
+		<p>{{itinerary.travelers}}</p>
+	</div>
+	<hr>
+		<div class="list-item" style="text-align: center;">
+		<h4>Vendor Name</h4>
+		<p>{{itinerary.vendor}}</p>
+	</div>
+	<hr>
+		<div class="list-item" style="text-align: center;">
+		<h4>Address</h4>
+		<p>{{itinerary.address}}</p>
+	</div>
+	<hr>
+		<div class="list-item" style="text-align: center;">
+		<h4>Phone</h4>
+		<p>{{itinerary.phone}}</p>
+	</div>
+	<hr>
+		<div class="list-item" style="text-align: center;">
+		<h4>Check In / Pick Up</h4>
+		<p>{{itinerary.checkin}}</p>
+	</div>
+	<hr>
+		<div class="list-item" style="text-align: center;">
+		<h4>Check Out / Drop Off</h4>
+		<p>{{itinerary.checkout}}</p>
+	</div>
+	<hr>
+		<div class="list-item" style="text-align: center;">
+		<h4>Confirmation</h4>
+		<p>{{itinerary.confirmation}}</p>
+	</div>
+	<hr>
+		<div class="list-item" style="text-align: center;">
+		<h4>Distance to Venue</h4>
+		<p>{{itinerary.distance}}</p>
+	</div>
+	<hr>
+		<div class="list-item" style="text-align: center;">
+		<h4>Cost</h4>
+		<p>{{itinerary.cost}}</p>
+	</div>
+	<hr>
+		<div class="list-item" style="text-align: center; ">
+		<h4>Credit Card Authorization</h4>
+		<p>{{itinerary.ccauth}}</p>
+	</div>
+	<hr>
+		<div class="list-item" style="text-align: center;">
+		<h4>Notes</h4>
+		<p>{{itinerary.notes}}</p>
+	</div>
+	<hr>
+     <h4 style="text-align: center;"><a href="#/itinerary/create/{{itinerary._id}}">Edit</a></h4>
+     <div style="text-align: center;">
+     <input type="submit" class="btn btn-info" value="Send">
+     </div>
+
