@@ -1,3 +1,17 @@
-/*.logo-image {
-	background: src("_style/images/rstblack.jpg");
-}*/
+.homepage-hero {
+	background: url('/_style/images/risingstarbackground.jpeg') no-repeat;
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-height: 100%;
+    min-width: 100%;
+}
+
+img {
+	width: 540px;
+}
+
+.navbar-text {
+	font-family: 'Indie Flower', cursive;
+}

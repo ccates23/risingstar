@@ -82,7 +82,7 @@ angular
     };
   })
   .controller("HomeCtrl", function() {
-    this.message = "Rising Star Travel";
+    this.message = "";
   })
   .controller("Table", function(Itinerary){
        var vm = this;
