@@ -44,24 +44,27 @@ angular
       },
       getItinerary: function (id, cb) {
         $http.get('/api/itinerary/' + id).then(cb);
+      },
+      sendItineraryEmail: function (id, cb) {
+        $http.post('/api/itinerary/' + id + '/email').then(cb)
       }
     };
   })
 
-  // .filter('artistList', function() {
-  //   return function(data)
-  // })
-
-
-
-  .controller("ItineraryListCtrl", function(Itinerary, $routeParams) {
+  .controller("ItineraryListCtrl", function($http, Itinerary, $routeParams) {
     var vm = this;
 
-    this.name = $routeParams.name;
+    vm.name = $routeParams.name;
 
-     Itinerary.getItineraries(function(data) {
+    Itinerary.getItineraries(function(data) {
       vm.itineraries = data.data;
     })
+
+    vm.sendEmail = function () {
+      Itinerary.sendItineraryEmail(vm.itineraries[0]._id, function () {
+        alert('Sent Email');
+      });
+    };
 
 
   })

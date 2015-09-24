@@ -13,18 +13,6 @@ var transport = nodemailer.createTransport(mandrillTransport({
   }
 }));
 
-transport.sendMail({
-  from: 'cates.chad@gmail.com',
-  to: 'cates.chad@gmail.com',
-  subject: 'Hello',
-  html: 'html'
-}, function(err, info) {
-  if (err) {
-    console.error(err);
-  } else {
-  }
-});
-
 
 router.get('/itinerary', function(req, res){
   Itinerary.find(function (err,data) {
@@ -36,6 +24,32 @@ router.get('/itinerary/:id', function(req, res){
    var id = req.params.id;
     Itinerary.findById(id, function (err,data) {
     res.send(data);
+  });
+});
+
+router.post('/itinerary/:id/email', function(req, res){
+  var id = req.params.id;
+  Itinerary.findById(id, function (err,data) {
+    transport.sendMail({
+      from: 'cates.chad@gmail.com',
+      to: 'g11203267@trbvm.com',
+      subject: 'Hello',
+      html: '<html>' +
+'<h1>Rising Star Travel</h1>' +
+'<h2>Itinerary</h2>' +
+'<h3>'+data.artist+'</h3>' +
+'<h3>'+data.date+'</h3>' +
+'<ul>' +
+'<li>Travelers: '+data.travelers+'</li>' +
+'</ul>'+
+'</html>'
+    }, function(err, info) {
+      if (err) {
+        throw err;
+      } else {
+        res.send(info)
+      }
+    });
   });
 });
 
