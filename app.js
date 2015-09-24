@@ -8,6 +8,8 @@ var exphbs = require("express-handlebars");
 var nodemailer = require('nodemailer');
 var mandrillTransport = require('nodemailer-mandrill-transport');
 
+require('./lib/mongodb');
+
 // Register `hbs` as our view engine using its bound `engine()` function.
 var hbs = exphbs.create({
     defaultLayout: "main",

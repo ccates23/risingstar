@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/risingstar');
+// mongoose.connect('mongodb://localhost/risingstar');
 
 var Itinerary = mongoose.model('Itinerary', {
   date: Date,

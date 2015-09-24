@@ -37,7 +37,6 @@ angular
         $http.post('/api/itinerary', obj).then(cb);
       },
       update: function (id, obj, cb) {
-        // Not sure with mongo but hey...
         $http.put('/api/itinerary/' + id, obj).then(cb);
       },
       getItineraries: function (cb) {
@@ -51,7 +50,7 @@ angular
 
   // .filter('artistList', function() {
   //   return function(data)
-  // });
+  // })
 
 
 
@@ -94,8 +93,6 @@ angular
   .controller("Table", function(Itinerary){
        var vm = this;
     Itinerary.getItineraries(function(data) {
-      console.log(data);
-      /// ?
       vm.itineraries = data.data;
     })
 

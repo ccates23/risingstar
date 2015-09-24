@@ -42,7 +42,6 @@ router.get('/itinerary/:id', function(req, res){
  router.put('/itinerary/:id', function(req, res) {
   var id = req.params.id;
   Itinerary.findById(id, function (err, data) {
-    console.log(id);
     if (data) {
       data.date = req.body.date;
       data.artist = req.body.artist;
