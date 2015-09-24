@@ -49,9 +49,9 @@ angular
     };
   })
 
-  .filter('artistList', function() {
-    return function(data)
-  })
+  // .filter('artistList', function() {
+  //   return function(data)
+  // });
 
 
 

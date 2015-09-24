@@ -22,14 +22,12 @@ transport.sendMail({
   if (err) {
     console.error(err);
   } else {
-    console.log(info);
   }
 });
 
 
 router.get('/itinerary', function(req, res){
   Itinerary.find(function (err,data) {
-    console.log('errrr', err)
     res.send(data);
   });
 });
