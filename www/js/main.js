@@ -48,6 +48,13 @@ angular
       }
     };
   })
+
+  .filter('artistList', function() {
+    return function(data)
+  })
+
+
+
   .controller("ItineraryListCtrl", function(Itinerary, $routeParams) {
     var vm = this;
 

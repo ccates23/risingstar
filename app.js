@@ -1,14 +1,12 @@
 //  required variables
 
-// var fs = require('fs');
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
-// var router = express.Router;
-// var form = require('./routes/form');
-// var routes = require('./routes/index');
 var api = require('./routes/api');
 var exphbs = require("express-handlebars");
+var nodemailer = require('nodemailer');
+var mandrillTransport = require('nodemailer-mandrill-transport');
 
 // Register `hbs` as our view engine using its bound `engine()` function.
 var hbs = exphbs.create({
@@ -39,4 +37,3 @@ var server = app.listen(port, function () {
 	console.log('Example app listening at http://%s:%d', host, port);
 });
 
-// module.exports = router;

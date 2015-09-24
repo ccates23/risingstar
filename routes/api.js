@@ -1,9 +1,31 @@
 var Itinerary = require("../models/itinerary");
 var express = require('express');
 var router = express.Router();
+var nodemailer = require('nodemailer');
+var mandrillTransport = require('nodemailer-mandrill-transport');
 
 // This is your API controller, all post requests should come here
 // POST /api/itinerary
+
+var transport = nodemailer.createTransport(mandrillTransport({
+  auth: {
+    apiKey: 'KXjnY9zIZHNLqY8hT82UTA'
+  }
+}));
+
+transport.sendMail({
+  from: 'cates.chad@gmail.com',
+  to: 'cates.chad@gmail.com',
+  subject: 'Hello',
+  html: 'html'
+}, function(err, info) {
+  if (err) {
+    console.error(err);
+  } else {
+    console.log(info);
+  }
+});
+
 
 router.get('/itinerary', function(req, res){
   Itinerary.find(function (err,data) {
@@ -43,7 +65,6 @@ router.get('/itinerary/:id', function(req, res){
         res.redirect('/itinerary/create');
       });
     };
-        
   })
 });
 
