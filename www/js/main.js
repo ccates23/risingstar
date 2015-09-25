@@ -61,7 +61,7 @@ angular
     })
 
     vm.sendEmail = function () {
-      Itinerary.sendItineraryEmail(vm.itineraries[0]._id, function () {
+      Itinerary.sendItineraryEmail(vm.itineraries[1]._id, function () {
         alert('Sent Email');
       });
     };

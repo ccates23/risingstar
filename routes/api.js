@@ -32,8 +32,8 @@ router.post('/itinerary/:id/email', function(req, res){
   Itinerary.findById(id, function (err,data) {
     transport.sendMail({
       from: 'cates.chad@gmail.com',
-      to: 'g11203267@trbvm.com',
-      subject: 'Hello',
+      to: 'cates.chad@gmail.com',
+      subject: 'Artist Itinerary',
       html: '<html>' +
 '<h1>Rising Star Travel</h1>' +
 '<h2>Itinerary</h2>' +
@@ -41,6 +41,16 @@ router.post('/itinerary/:id/email', function(req, res){
 '<h3>'+data.date+'</h3>' +
 '<ul>' +
 '<li>Travelers: '+data.travelers+'</li>' +
+'<li>Vendor: '+data.vendor+'</li>' +
+'<li>Address: '+data.address+'</li>' +
+'<li>Phone: '+data.phone+'</li>' +
+'<li>Check In / Drop Off '+data.checkin+'</li>' +
+'<li>Check Out / Pick Up '+data.checkout+'</li>' +
+'<li>Confirmation: '+data.confirmation+'</li>' +
+'<li>Distance: '+data.distance+'</li>' +
+'<li>Cost: '+data.cost+'</li>' +
+'<li>Credit Card Authorization: '+data.ccauth+'</li>' +
+'<li>Notes: '+data.notes+'</li>' +
 '</ul>'+
 '</html>'
     }, function(err, info) {
